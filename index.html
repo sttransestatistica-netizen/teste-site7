@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-green: #1B5E20;
+            --cream: #FFFDFA;
+            --text-dark: #2C3E50;
+            --white: #FFFFFF;
+            --border-radius: 12px;
+        }
+
+        html, body {
+            height: 100%;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            overflow-x: hidden;
+        }
+
+        body {
+            color: var(--text-dark);
+            line-height: 1.6;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        .header {
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 80px;
+            background: var(--white);
+            border-bottom: 3px solid transparent;
+            border-image: linear-gradient(
+                to right,
+                yellow 33.4%,
+                green 33.4%, green 66.6%,
+                red 66.6%
+            );
+            border-image-slice: 1;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 2rem;
+            z-index: 1000;   
+        }
+
+        .logo {
+            height: 50px;
+            object-fit: contain;
+        }
+
+        .main {
+            flex: 1;
+            padding-top: 40px;
+            max-width: 1450px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        .service-section {
+            background: white;
+            border-radius: var(--border-radius);
+            padding: 2rem;
+            margin-bottom: 2rem;
+            border: 2px solid var(--primary-green);
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .section-icon {
+            width: 80px;
+            height: 80px;
+            background: var(--primary-green);
+            border-radius: var(--border-radius);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 2rem;
+            flex-shrink: 0;
+        }
+
+        .section-title {
+            color: var(--primary-green);
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin: 0;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .service-card {
+            background: linear-gradient(135deg, var(--cream) 0%, #F0EDD8 100%);
+            border: 2px solid var(--primary-green);
+            border-radius: var(--border-radius);
+            padding: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            text-decoration: none;
+            color: var(--text-dark);
+            transition: all 0.1s ease;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card:hover {
+            transform: translateY(-1px);
+            border-color: var(--primary-green);
+        }
+
+        .service-card-icon {
+            width: 60px;
+            height: 60px;
+            background: var(--primary-green);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            flex-shrink: 0;
+            transition: all 0.2s ease;
+        }
+
+        .service-card:hover .service-card-icon {
+            transform: scale(1.1) rotate(5deg);
+        }
+
+        .service-card-text {
+            font-weight: 600;
+            font-size: 1rem;
+        }
+
+        
+        .footer {
+    border-top: 3px solid; 
+    border-image: linear-gradient(
+        to right,
+        yellow 33.4%,
+        green 33.4%, green 66.6%,
+        red 66.6%
+    ) 1; 
+    background: linear-gradient(135deg, var(--primary-green) 0%, #1e4a5f 100%);
+    color: white;
+    padding: 3rem 0 1rem 0;
+    margin-top: auto;
+    width: 100vw !important;
+    max-width: 100vw !important;
+    margin-left: calc(50% - 50vw) !important;
+    margin-bottom: 0 !important;
+}
+
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            text-align: center;
+        }
+
+        .footer-section h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--cream);
+        }
+
+        .footer-section p {
+            margin-bottom: 0.5rem;
+            opacity: 0.9;
+        }
+
+        .footer-section i {
+            margin-right: 0.5rem;
+            color: #FFD700;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255,255,255,0.2);
+            opacity: 0.8;
+        }
+
+        
+        .news-container {
+            max-width: 100%;
+        }
+
+        .news-featured {
+            background: white;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            margin-bottom: 2rem;
+            border: 2px solid var(--primary-green);
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0;
+            transition: all 0.3s ease;
+        }
+
+        .news-featured-image {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .news-featured-image img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+        }
+
+        .news-category {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background: #d32f2f; 
+            color: white;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        .news-featured-content {
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .news-meta {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 10px;
+            font-size: 13px;
+            color: #666;
+        }
+
+        .news-meta i {
+            color: var(--primary-green);
+            margin-right: 5px;
+        }
+
+        .news-featured-title {
+            color: var(--primary-green);
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            line-height: 1.3;
+        }
+
+        .news-featured-excerpt {
+            color: var(--text-dark);
+            line-height: 1.5;
+            margin-bottom: 15px;
+            opacity: 0.8;
+        }
+
+        
+        @media (max-width: 768px) {
+            .header {
+                padding: 0 1rem;
+            }
+
+            .section-header {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .service-section {
+                padding: 1.5rem;
+            }
+
+            .news-featured {
+                grid-template-columns: 1fr;
+            }
+            
+            .news-featured-image img {
+                height: 200px;
+            }
+            
+            .news-featured-content {
+                padding: 1rem;
+            }
+            
+            .news-meta {
+                flex-direction: column;
+                gap: 5px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .logo {
+                height: 40px;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div vw class="enabled">
+  <div vw-access-button class="active"></div>
+  <div vw-plugin-wrapper></div>
+</div>
+
+<script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+<script>
+  new window.VLibras.Widget('https://vlibras.gov.br/app', {
+    avatar: 'Icaro'
+  });
+</script>
+
+    
+    <header class="header">
+        <img src="https://images.weserv.nl/?url=drive.google.com/uc%3Fexport%3Dview%26id%3D1Nc6KgvZjYE9h2eAvwmm0QhfisXbtYV28&output=png&bg=ffffff" alt="Logo STTRANS" class="logo">
+    
+       <a href="https://www.queimadas.pb.gov.br/" target="_blank" rel="noopener">
+        <img src="https://queimadas.pb.gov.br/storage/configuracoes/67b8a0e9b0ef81fhlt.png" alt="Logo Queimadas" class="logo">
+      </a>
+    </header>
+
+    
+    <main class="main">
+        <!-- LINKS ÚTEIS -->
+        <section class="service-section">
+            <div class="section-header">
+                <div class="section-icon">
+                    <i class="fas fa-link"></i>
+                </div>
+                <h2 class="section-title">ACESSO RÁPIDO</h2>
+            </div>
+                
+            <div class="services-grid">
+                <a href="https://queimadas.gott.norteware.com.br/gott/publico/consulta-infracoes-veiculo" 
+                   class="service-card" 
+                   target="_blank" 
+                   rel="noopener noreferrer">
+                    <div class="service-card-icon">
+                        <i class="fas fa-file-invoice-dollar"></i>
+                    </div>
+                    <div class="service-card-text">Consulte e Pague suas Multas</div>
+                 </a>
+
+             <div class="service-card" onclick="showDevelopment()">
+                    <div class="service-card-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <div class="service-card-text">Quem Somos (Em Breve)</div>
+                </div>
+
+                <a href="https://portaldatransparencia.publicsoft.com.br/sistemas/ContabilidadePublica/" 
+                   class="service-card" 
+                   target="_blank" 
+                   rel="noopener noreferrer">
+                    <div class="service-card-icon">
+                        <i class="fas fa-magnifying-glass"></i>
+                    </div>
+                    <div class="service-card-text">Portal da Transparência</div>
+                </a>
+
+                <a href="https://transparencia.elmartecnologia.com.br/?e=312155" 
+                   class="service-card" 
+                   target="_blank" 
+                   rel="noopener noreferrer">
+                    <div class="service-card-icon">
+                        <i class="fas fa-gavel"></i>
+                    </div>
+                    <div class="service-card-text">Licitações</div>
+                </a>
+
+                <div class="service-card" onclick="showDevelopment()">
+                    <div class="service-card-icon">
+                        <i class="fa-brands fa-whatsapp"></i>
+                    </div>
+                    <div class="service-card-text">Atendimento Via Whatsapp (Em Breve)</div>
+                </div>
+                
+                <div class="service-card" onclick="showDevelopment()">
+                    <div class="service-card-icon">
+                        <i class="fas fa-chart-bar"></i>
+                    </div>
+                    <div class="service-card-text">Painel BI (Em Breve)</div>
+                </div>
+            </div>
+        </section>
+        
+        
+        <section class="service-section">
+            <div class="section-header">
+                <div class="section-icon">
+                    <i class="fas fa-newspaper"></i>
+                </div>
+                <h2 class="section-title">NOTÍCIAS RECENTES</h2>
+            </div>
+            
+            <div class="news-container">
+              
+                <div class="news-featured">
+                    <div class="news-featured-image">
+                        <img src="https://media.istockphoto.com/id/1431411681/pt/vetorial/car-front-icon-silhouette-symbol-car-sign-in-linear-style.jpg?s=612x612&w=0&k=20&c=amxLmyjnH8CM-VF0sp53PEtQcFG6z1OpvGcZhJKa3r0=" alt="Notícia Principal">
+                        <div class="news-category">DESTAQUE</div>
+                    </div>
+                    <div class="news-featured-content">
+                        <div class="news-meta">
+                            <span><i class="fas fa-calendar-alt"></i> 15 de Agosto de 2025</span>
+                            <span><i class="fas fa-user"></i> STTRANS</span>
+                        </div>
+                        <h3 class="news-featured-title">Notícia em Destaque</h3>
+                        <p class="news-featured-excerpt">Descrição da notícia principal que está em destaque no portal da STTRANS...</p>
+                        <div class="service-card" style="display: inline-flex; width: auto; margin-top: 10px;">
+                            <div class="service-card-icon" style="width: 40px; height: 40px; font-size: 1rem;">
+                                <i class="fas fa-arrow-right"></i>
+                            </div>
+                            <div class="service-card-text">Ler Mais</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="see-more-news" style="text-align: center; margin-top: 20px;">
+                    <a href="#" onclick="showDevelopment(); return false;" class="service-card" style="display: inline-flex; align-items: center; width: auto; padding: 10px 20px;">
+                        <div class="service-card-icon" style="width: 40px; height: 40px; font-size: 1rem;">
+                            <i class="fas fa-arrow-right"></i>
+                        </div>
+                        <div class="service-card-text">Veja Todas as Notícias (Em Breve)</div>
+                    </a>
+                </div>
+            </div> 
+        </section>
+
+        
+        <section class="service-section">
+            <div class="section-header">
+                <div class="section-icon">
+                    <i class="fas fa-share-alt"></i>
+                </div>
+                <h2 class="section-title">REDES SOCIAIS</h2>
+            </div>
+
+            <div class="services-grid">
+                <a href="https://www.instagram.com/sttransqueimadas/" target="_blank" rel="noopener noreferrer" class="service-card">
+                    <div class="service-card-icon" style="background:#E1306C;">
+                        <i class="fab fa-instagram"></i>
+                    </div>
+                    <div class="service-card-text">Nosso Instagram</div>
+                </a>
+
+                <a href="https://www.facebook.com/queimadaspmq" target="_blank" rel="noopener noreferrer" class="service-card">
+                    <div class="service-card-icon" style="background:#1877F2;">
+                        <i class="fab fa-facebook-f"></i>
+                    </div>
+                    <div class="service-card-text">Facebook da Prefeitura</div>
+                </a>
+
+                <a href="https://www.queimadas.pb.gov.br/" target="_blank" rel="noopener noreferrer" class="service-card">
+                    <div class="service-card-icon" style="background:#28a745;">
+                        <i class="fas fa-globe"></i>
+                    </div>
+                    <div class="service-card-text">Site Oficial da Prefeitura</div>
+                </a>
+            </div>
+        </section>
+    </main>
+
+    
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3><i class="fas fa-building"></i> STTRANS</h3>
+                <p>Superintendência de Transportes e Trânsito de Queimadas</p>
+                <p>Queimadas - Paraíba</p>
+            </div>
+            
+            <div class="footer-section">
+                <h3><i class="fas fa-map-marker-alt"></i> Endereço</h3>
+                <p><i class="fas fa-map-marker-alt"></i> Rua Miguel Benicio de Melo, 74 - Centro, Queimadas</p>
+                <p><i class="fas fa-phone"></i> Telefone Para Contato: Em Breve</p>
+                <p><i class="fas fa-envelope"></i> E-mail: Em Breve</p>
+            </div>
+            
+            <div class="footer-section">
+                <h3><i class="fas fa-clock"></i> Horário de Funcionamento</h3>
+                <p><i class="fas fa-calendar-day"></i> Segunda à Sexta</p>
+                <p><i class="fas fa-clock"></i> 07:00 às 14:00</p>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <div style="display: flex; justify-content: center; align-items: center; margin-bottom: 20px;">
+                <img src="https://images.weserv.nl/?url=drive.google.com/uc%3Fexport%3Dview%26id%3D1Nc6KgvZjYE9h2eAvwmm0QhfisXbtYV28&output=png&bg=transparent" alt="Logo STTRANS" style="height: 60px; object-fit: contain;">
+            </div>
+            <p>© 2025 | Todos os direitos reservados</p>
+            <p><strong>Serviço Digital. Sua vida mais fácil!</strong></p>
+        </div>
+    </footer>
+
+    <script>
+        
+        function showDevelopment() {
+            alert('🚧 Funcionalidade em desenvolvimento!\n\nEm breve este serviço estará disponível.');
+        }
+    </script>
+</body>
+</html>
