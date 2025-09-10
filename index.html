@@ -1,139 +1,58 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html <?php language_attributes(); ?>>
+<head>
+  <meta charset="<?php bloginfo('charset'); ?>">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><?php wp_title('|', true, 'right'); bloginfo('name'); ?></title>
+  <link rel="icon" href="http://localhost/sttrans/wp-content/uploads/2025/09/TITULO-16PX.png" sizes="16x16" type="image/png">
+  <link rel="icon" href="http://localhost/sttrans/wp-content/uploads/2025/09/TITULO-32PX.png" sizes="32x32" type="image/png">
+  <link rel="icon" href="http://localhost/sttrans/wp-content/uploads/2025/09/TITULO-48PX.png" sizes="48x48" type="image/png">
+  <link rel="apple-touch-icon" href="http://localhost/sttrans/wp-content/uploads/2025/09/TITULO-180PX.png" sizes="180x180">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <?php wp_head(); ?>
+</head>
 
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-      * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-      }
+<body <?php body_class(); ?>>
+<?php wp_body_open(); ?>
 
-      :root {
-        --primary-green: #1B5E20;
-        --cream: #FFFDFA;
-        --text-dark: #2C3E50;
-        --white: #FFFFFF;
-        --border-radius: 12px;
-      }
+<header class="header">
+  <a href="<?php echo home_url(); ?>" style="text-decoration: none; color: inherit;">
+    <img src="http://localhost/sttrans/wp-content/uploads/2025/09/LOGO-STTRANS-ACIMA.png" alt="Logo STTRANS" class="logo" style="display: block;">
+  </a>
 
-      html,
-      body {
-        height: 100%;
-        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        overflow-x: hidden;
-      }
+  <a href="<?php echo home_url(); ?>" style="text-decoration: none; color: inherit;">
+    <div class="service-card" style="display: inline-flex; align-items: center; width: auto; padding: 5px 10px;
+                position: fixed; top: 5px; left: 50%; transform: translateX(-50%);
+                z-index: 1000; background: white; border-radius: 8px; box-shadow: 0 2px 6px rgba(0,0,0,0.2);">
+      <div class="service-card-icon" style="width: 28px; height: 28px; font-size: 1rem; display: flex; align-items: center; justify-content: center;">
+        <i class="fas fa-home"></i>
+      </div>
+      <div class="service-card-text" style="margin-left: -14px; font-size: 1rem;"></div>
+    </div>
+  </a>
 
-     
-      .header {
-        top: 0;
-        left: 0;
-        right: 0;
-        height: 80px;
-        background: var(--white);
-        border-bottom: 3px solid transparent;
-        border-image: linear-gradient(to right,
-            yellow 33.4%,
-            green 33.4%, green 66.6%,
-            red 66.6%);
-        border-image-slice: 1;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        padding: 0 2rem;
-        z-index: 1000;
-      }
+  <a href="https://www.queimadas.pb.gov.br/" target="_blank" rel="noopener">
+    <img src="http://localhost/sttrans/wp-content/uploads/2025/09/LOGO-DE-QUEIMADAS.png" alt="Logo de Queimadas" class="logo" style="display: block;">
+  </a>
+</header>
+<div id="header-placeholder"></div>
 
-      .logo {
-        height: 50px;
-        object-fit: contain;
-      }
+<div vw class="enabled">
+  <div vw-access-button class="active"></div>
+  <div vw-plugin-wrapper></div>
+</div>
 
-       
-      .service-card {
-        background: linear-gradient(135deg, var(--cream) 0%, #F0EDD8 100%);
-        border: 2px solid var(--primary-green);
-        border-radius: var(--border-radius);
-        padding: 1.5rem;
-        display: flex;
-        align-items: center;
-        gap: 1rem;
-        text-decoration: none;
-        color: var(--text-dark);
-        transition: all 0.1s ease;
-        cursor: pointer;
-        position: relative;
-        overflow: hidden;
-      }
+<script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+<script>
+  new window.VLibras.Widget();
+</script>
 
-      .service-card:hover {
-        transform: translateY(-1px);
-        border-color: var(--primary-green);
-      }
+<!-- CSS para esconder a frase "Acessível em Libras" -->
+<style>
+  [vw-access-button] span {
+    display: none !important;
+  }
+</style>
 
-      .service-card-icon {
-        width: 60px;
-        height: 60px;
-        background: var(--primary-green);
-        border-radius: 10px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        color: white;
-        font-size: 1.5rem;
-        flex-shrink: 0;
-        transition: all 0.2s ease;
-      }
-
-      .service-card:hover .service-card-icon {
-        transform: scale(1.1) rotate(5deg);
-      }
-
-      .service-card-text {
-        font-weight: 600;
-        font-size: 1rem;
-      }
-
-      
-      @media (max-width: 768px) {
-        .header {
-          padding: 0 1rem;
-        }
-
-      }
-
-      @media (max-width: 480px) {
-        .logo {
-          height: 40px;
-        }
-
-      }
-    </style>
-  </head>
-
-    <header class="header">
-      <a href="https://sttransestatistica-netizen.github.io/teste-site3/" style="text-decoration: none; color: inherit;">
-        <img src="https://images.weserv.nl/?url=drive.google.com/uc%3Fexport%3Dview%26id%3D1Nc6KgvZjYE9h2eAvwmm0QhfisXbtYV28&output=png&bg=ffffff" alt="Logo STTRANS" class="logo" style="display: block;">
-      </a>
-
-      <a href="https://sttransestatistica-netizen.github.io/teste-site3/" style="text-decoration: none; color: inherit;">
-        <div class="service-card" style="display: inline-flex; align-items: center; width: auto; padding: 5px 10px;
-                    position: fixed; top: 5px; left: 50%; transform: translateX(-50%);
-                    z-index: 1000; background: white; border-radius: 8px; box-shadow: 0 2px 6px rgba(0,0,0,0.2);">
-          <div class="service-card-icon" style="width: 28px; height: 28px; font-size: 1rem; display: flex; align-items: center; justify-content: center;">
-            <i class="fas fa-home"></i>
-          </div>
-          <div class="service-card-text" style="margin-left: -14px; font-size: 1rem;"></div>
-        </div>
-      </a>
-
-      <a href="https://www.queimadas.pb.gov.br/" target="_blank" rel="noopener">
-        <img src="https://queimadas.pb.gov.br/storage/configuracoes/67b8a0e9b0ef81fhlt.png" alt="Logo de Queimadas" class="logo" style="display: block;">
-      </a>
-    </header>
-
+</body>
 </html>
-
